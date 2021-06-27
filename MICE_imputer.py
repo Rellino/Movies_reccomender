@@ -18,8 +18,8 @@ from sklearn.ensemble import RandomForestRegressor
 #%%[markdown]
 ### Loading and reshaping the dataset
 
-ratings = pd.read_csv('data/ratings.csv')
-movies = pd.read_csv('data/movies.csv')
+ratings = pd.read_csv('data/raw/ratings.csv')
+movies = pd.read_csv('data/raw/movies.csv')
 
 # %%
 ratings.shape, ratings.head(), movies.shape, movies.head()
@@ -87,6 +87,6 @@ df_final= df_clean.T
 df_final
 
 # %% # saving the final df to csv -> Ready for recommender systems
-df_final.to_csv('data/df_final.csv', index= False)
+df_final.to_csv('data/preprocessed/df_final.csv', index= False)
 
 

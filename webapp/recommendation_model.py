@@ -10,7 +10,7 @@ import pickle
 from time import sleep
 from sklearn.decomposition import NMF
 
-logging.basicConfig(filename='/models/NMFmodel.log',
+logging.basicConfig(filename='models/NMFmodel.log',
                     format='%(asctime)s: %(message)s')
 # %%
 
@@ -31,7 +31,7 @@ def update_model(df):
     # fitting the model to R
     fit_model = model.fit(R)
 
-    return fit_model 
+    return fit_model, R 
 
 if __name__ == '__main__':
 
@@ -40,13 +40,16 @@ if __name__ == '__main__':
         # Loading the up to date preprocessed rating file
         # X-Axis -> userId , Y-Axis -> movieId
         df_final = pd.read_csv('../data/preprocessed/df_final.csv')
-        nmf = update_model(df_final)
+        nmf, R_nmf = update_model(df_final)
 
         
         # saving the model
-        filename = '/models/finalized_NMF_model.sav'
-        pickle.dump(nmf, open(filename, 'wb'))
+        with open('models/NMF_model.pickle','wb') as f:
+            pickle.dump(nmf, f)
         logging.WARNING('New version of the NMF trained model saved in the "models" folder.')
+        with open('models/NMF_R.pickle','wb') as f2:
+            pickle.dump(R_nmf, f2)
+        logging.WARNING('New version of the R matrix for the NMF model saved in the "models" folder.')
 
         sleep(60*60*12)
 

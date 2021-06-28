@@ -18,8 +18,8 @@ def main_page():
 
 @app.route('/recommender')
 def rec_page():
-    #html_form_data = dict(request.args) # to collect the data from the user (to build the recommendation)
-    recs = get_recommendations() # here we need to pass the html_form_data from the user to build the proper recommendation
+    html_form_data = dict(request.args) # to collect the data from the user (to build the recommendation)
+    recs = get_recommendations(html_form_data) 
     
     return render_template('recommender.html', movies = recs)
 

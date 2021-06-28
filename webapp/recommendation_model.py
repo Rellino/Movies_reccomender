@@ -33,7 +33,7 @@ def update_model(df):
 
     return fit_model 
 
-if __name__ == '__main':
+if __name__ == '__main__':
 
     while True:
 

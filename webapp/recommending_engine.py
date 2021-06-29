@@ -1,8 +1,8 @@
-"""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 This module defines a function that makes predictions based on the 
 NFM model which is trained by the recommendation_model.py module.
 It also updates the df_final.csv file with new ratings by new users.
-"""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 import numpy as np
 from sklearn.decomposition import NMF
@@ -24,9 +24,6 @@ def get_recommendations(ratings, titles):
     # movie-genre matrix
     Q = model.components_  
 
-    # user-genre matrix
-    P = model.transform(R)  
-
     ### Recommendation
     # creating a new user
 
@@ -34,7 +31,9 @@ def get_recommendations(ratings, titles):
     
     ids = []
     for title in titles:
+        
         ids.append(MOVIES[MOVIES['title']==title]['movieId'].iloc[0])
+        
     idx = []
     for movie_id in ids:
         idx.append(df_final.columns.get_loc(str(movie_id)))
@@ -51,30 +50,23 @@ def get_recommendations(ratings, titles):
     # getting the actual recommendation by multiplying P and Q
     actual_recommendations = np.dot(user_P, Q) 
 
-    # take a recommendation
-    sorted_recomm = np.argsort(actual_recommendations) #index of a sorted array
-
-    # choosing top 5 recommendations 
-    top5 = sorted_recomm[:, 0:5].reshape(1*5)
-    l_top5 = top5.tolist()
-
-
+    
     # Finding the name of recommended movies
-    title_list = []
-    for i in l_top5:
-        title_list.append(MOVIES[MOVIES['movieId']==i].title.iloc[0])
+    topn_arr = np.argsort(actual_recommendations[0])[::-1][1:6] 
+    
+    # top 5 values of the inversely sorted array 
+    topn_ind = df_final.columns[topn_arr].tolist() 
+    
+    # create a list of corresponding ids
+    title_list = [MOVIES[MOVIES['movieId']==int(m)]['title'].iloc[0] for m in topn_ind]
+    
 
+    
     return title_list, new_user
 
 
 def dataframe_updater(user):
+    #df_user = pd.DataFrame(user, columns=df_final.columns)
+    #df_final.append(df_user, ignore_index=True)
+    #df_final.to_csv('../data/preprocessed/df_final.csv')
     pass
-
-#%%
-
-#lst, new_user = get_recommandations({'rating1':'2','rating2':'5','rating3':'3','rating4':'2','rating5':'4'})
-
-#%%
-#lst
-
-#%%

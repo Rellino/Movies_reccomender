@@ -36,11 +36,11 @@ def get_recommandations(ratings):
     # THIS PART HAS TO BE UPDATED WITH THE TITLES!!!
     
 
-    new_user[0][15] = ratings['rating1']
-    new_user[0][2100] = ratings['rating2']
-    new_user[0][30] = ratings['rating3']
-    new_user[0][112] = ratings['rating4']
-    new_user[0][105] = ratings['rating5']
+    new_user[0][15] = float(ratings['rating1'])
+    new_user[0][2100] = float(ratings['rating2'])
+    new_user[0][30] = float(ratings['rating3'])
+    new_user[0][112] = float(ratings['rating4'])
+    new_user[0][105] = float(ratings['rating5'])
 
     #transfering the model for P matrix for the new user
     user_P = model.transform(new_user)

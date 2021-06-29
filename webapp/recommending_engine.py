@@ -20,7 +20,7 @@ MOVIES = pd.read_csv('../data/raw/movies.csv')
 
 df_final = pd.read_csv('../data/preprocessed/df_final.csv')
 
-def get_recommandations(ratings):
+def get_recommendations(ratings):
     
     # movie-genre matrix
     Q = model.components_  
@@ -36,11 +36,11 @@ def get_recommandations(ratings):
     # THIS PART HAS TO BE UPDATED WITH THE TITLES!!!
     
 
-    new_user[0][15] = float(ratings['rating1'])
-    new_user[0][2100] = float(ratings['rating2'])
-    new_user[0][30] = float(ratings['rating3'])
-    new_user[0][112] = float(ratings['rating4'])
-    new_user[0][105] = float(ratings['rating5'])
+    new_user[0][15] = float(ratings['movie1'])
+    new_user[0][2100] = float(ratings['movie2'])
+    new_user[0][30] = float(ratings['movie3'])
+    new_user[0][112] = float(ratings['movie4'])
+    new_user[0][105] = float(ratings['movie5'])
 
     #transfering the model for P matrix for the new user
     user_P = model.transform(new_user)
@@ -69,9 +69,9 @@ def dataframe_updater(user):
 
 #%%
 
-lst, new_user = get_recommandations({'rating1':'2','rating2':'5','rating3':'3','rating4':'2','rating5':'4'})
+#lst, new_user = get_recommandations({'rating1':'2','rating2':'5','rating3':'3','rating4':'2','rating5':'4'})
 
 #%%
-lst
+#lst
 
 #%%

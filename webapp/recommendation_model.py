@@ -46,10 +46,10 @@ if __name__ == '__main__':
         # saving the model
         with open('models/NMF_model.pickle','wb') as f:
             pickle.dump(nmf, f)
-        logging.WARNING('New version of the NMF trained model saved in the "models" folder.')
+        logging.warning('New version of the NMF trained model saved in the "models" folder.')
         with open('models/NMF_R.pickle','wb') as f2:
             pickle.dump(R_nmf, f2)
-        logging.WARNING('New version of the R matrix for the NMF model saved in the "models" folder.')
+        logging.warning('New version of the R matrix for the NMF model saved in the "models" folder.')
 
         sleep(60*60*12)
 

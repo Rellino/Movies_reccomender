@@ -6,7 +6,7 @@ It ties all the other scripts together and produces the web application.
 from flask import Flask
 from flask import render_template
 from flask import request
-from recommending_engine import get_recommendations
+from recommending_engine import get_recommendations, dataframe_updater
 
 
 app = Flask(__name__)
@@ -19,8 +19,10 @@ def main_page():
 @app.route('/recommender')
 def rec_page():
     html_form_data = dict(request.args) # to collect the data from the user (to build the recommendation)
-    recs = get_recommendations(html_form_data) 
+    recs, new_user = get_recommendations(html_form_data) 
     
+    dataframe_updater(new_user)
+
     return render_template('recommender.html', movies = recs)
 
 

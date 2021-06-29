@@ -3,6 +3,8 @@ This module defines a function that makes predictions based on the
 NFM model which is trained by the recommendation_model.py module.
 It also updates the df_final.csv file with new ratings by new users.
 """
+
+#%%
 import numpy as np
 from sklearn.decomposition import NMF
 import pandas as pd
@@ -36,7 +38,7 @@ def get_recommandations(ratings):
 
     new_user[0][15] = ratings['rating1']
     new_user[0][2100] = ratings['rating2']
-    new_user[0][65] = ratings['rating3']
+    new_user[0][30] = ratings['rating3']
     new_user[0][112] = ratings['rating4']
     new_user[0][105] = ratings['rating5']
 
@@ -59,8 +61,17 @@ def get_recommandations(ratings):
     for i in l_top5:
         title_list.append(MOVIES[MOVIES['movieId']==i].title.iloc[0])
 
-    return title_list
+    return title_list, new_user
 
 
-def dataframe_updater():
+def dataframe_updater(user):
     pass
+
+#%%
+
+lst, new_user = get_recommandations({'rating1':2,'rating2':5,'rating3':3,'rating4':2,'rating5':4})
+
+#%%
+lst
+
+#%%

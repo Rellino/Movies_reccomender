@@ -4,26 +4,27 @@
     
     <head>
       <meta charset="utf-8">
-      <title>Awesome Movie Recommender</title>
+      <title>StatSigMoRe</title>
     </head>
     
     <body>
       <h1>{{ title }}</h1>
+      <h2>{{ subtitle }}</h2>
       <p>This is a <br>line break</p>
       <a href="https://www.lyrics.com">Go to the lyrics site!</a>
       <br>
       <form action="/recommender">
         <p>Please rate the following movies on a scale from 0.0 to 5.0:</p>
-        Movie 1:
-        <input type="text" name="rating1" placeholder="0.0 - 5.0"><br>
-        Movie 2:
-        <input type="text" name="rating2" placeholder="0.0 - 5.0"><br>
-        Movie 3:
-        <input type="text" name="rating3" placeholder="0.0 - 5.0"><br>
-        Movie 4:
-        <input type="text" name="rating4" placeholder="0.0 - 5.0"><br>
-        Movie 5:
-        <input type="text" name="rating5" placeholder="0.0 - 5.0"><br>
+        {{ movie1 }}:
+        <input type="text" name="{{ movie1 }}" placeholder="0.0 - 5.0"><br>
+        {{ movie2 }}:
+        <input type="text" name="{{ movie2 }}" placeholder="0.0 - 5.0"><br>
+        {{ movie3 }}:
+        <input type="text" name="{{ movie3 }}" placeholder="0.0 - 5.0"><br>
+        {{ movie4 }}:
+        <input type="text" name="{{ movie4 }}" placeholder="0.0 - 5.0"><br>
+        {{ movie5 }}:
+        <input type="text" name="{{ movie5 }}" placeholder="0.0 - 5.0"><br>
         <input type="submit">
       </form>
       

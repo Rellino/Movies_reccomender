@@ -44,7 +44,7 @@ def get_recommandations(ratings):
 
     #transfering the model for P matrix for the new user
     user_P = model.transform(new_user)
-
+             
     # getting the actual recommendation by multiplying P and Q
     actual_recommendations = np.dot(user_P, Q) 
 
@@ -69,7 +69,7 @@ def dataframe_updater(user):
 
 #%%
 
-lst, new_user = get_recommandations({'rating1':2,'rating2':5,'rating3':3,'rating4':2,'rating5':4})
+lst, new_user = get_recommandations({'rating1':'2','rating2':'5','rating3':'3','rating4':'2','rating5':'4'})
 
 #%%
 lst

@@ -4,7 +4,6 @@ NFM model which is trained by the recommendation_model.py module.
 It also updates the df_final.csv file with new ratings by new users.
 """
 
-#%%
 import numpy as np
 from sklearn.decomposition import NMF
 import pandas as pd
@@ -20,7 +19,7 @@ MOVIES = pd.read_csv('../data/raw/movies.csv')
 
 df_final = pd.read_csv('../data/preprocessed/df_final.csv')
 
-def get_recommendations(ratings):
+def get_recommendations(ratings, titles):
     
     # movie-genre matrix
     Q = model.components_  
@@ -33,14 +32,18 @@ def get_recommendations(ratings):
 
     new_user = np.full(shape=(1,R.shape[1]), fill_value = df_final.mean().mean())
     
-    # THIS PART HAS TO BE UPDATED WITH THE TITLES!!!
-    
+    ids = []
+    for title in titles:
+        ids.append(MOVIES[MOVIES['title']==title]['movieId'].iloc[0])
+    idx = []
+    for movie_id in ids:
+        idx.append(df_final.columns.get_loc(str(movie_id)))
 
-    new_user[0][15] = float(ratings['movie1'])
-    new_user[0][2100] = float(ratings['movie2'])
-    new_user[0][30] = float(ratings['movie3'])
-    new_user[0][112] = float(ratings['movie4'])
-    new_user[0][105] = float(ratings['movie5'])
+    new_user[0][idx[0]] = float(ratings['movie_1'])
+    new_user[0][idx[1]] = float(ratings['movie_2'])
+    new_user[0][idx[2]] = float(ratings['movie_3'])
+    new_user[0][idx[3]] = float(ratings['movie_4'])
+    new_user[0][idx[4]] = float(ratings['movie_5'])
 
     #transfering the model for P matrix for the new user
     user_P = model.transform(new_user)

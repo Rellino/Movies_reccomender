@@ -24,7 +24,8 @@ def main_page():
     
     return render_template('main.html',
     title='🎬 The Statistically Significant Movie Recommender 🎬',
-    subtitle="Courtesy of Laura Bartolini, Behzad Azarhoushang & Francesco Mari,\nwho won't get offended if you don't take their advice (even if you should).",
+    subtitle="Courtesy of Laura Bartolini, Behzad Azarhoushang & Francesco Mari",
+    subsubtitle="who won't get offended if you don't take their advice...even if you should!",
     movie1=five_titles[0],
     movie2=five_titles[1],
     movie3=five_titles[2],
@@ -35,7 +36,15 @@ def main_page():
 @app.route('/recommender')
 def rec_page():
     html_form_data = dict(request.args) # to collect the data from the user (to build the recommendation)
-    recs, new_user = get_recommendations(html_form_data) 
+    
+    names = list(html_form_data.keys())
+    counter = 1
+    for name in names:
+        new_key = f'movie_{counter}'
+        html_form_data[new_key] = html_form_data.pop(name)
+        counter = counter + 1
+
+    recs, new_user = get_recommendations(html_form_data,names) 
     
     dataframe_updater(new_user)
 

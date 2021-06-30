@@ -1,2 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Recommendations!</title>
+</head>
+
+<body>
+
+  <h1> Thank you for your patience!</h1>
+  <h2> It was long, we know 😴</h2>
+  <h3> But now it's done, and here are your recommended movies:</h3>
+  <ul>
+
+    {% for m in movies%}
+    <li>{{ m }}</li>
+    {% endfor %}
+
+    <ul>
+      <p>
+        <a href="/">Go back to main page and search again...if you have the courage!</a>
+      </p>
+
+</body>
+
+</html>

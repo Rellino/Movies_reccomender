@@ -66,7 +66,7 @@ def get_recommendations(ratings, titles):
 
 
 def dataframe_updater(user):
-    #df_user = pd.DataFrame(user, columns=df_final.columns)
-    #df_final.append(df_user, ignore_index=True)
-    #df_final.to_csv('../data/preprocessed/df_final.csv')
-    pass
+    df_user = pd.DataFrame(user, columns=df_final.columns)
+    df_final_new = df_final.append(df_user, ignore_index=True)
+    df_final_new.to_csv('../data/preprocessed/df_final.csv',columns=df_final.columns, index=False)
+    

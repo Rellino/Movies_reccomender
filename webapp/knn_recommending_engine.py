@@ -1,8 +1,7 @@
-'''
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     Item-based Collaborative Filtering for Movie Recommendation System.
     Using KNN with cosine distance
-'''
-#%%
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 import pandas as pd
 import numpy as np
@@ -15,7 +14,7 @@ from sklearn.neighbors import NearestNeighbors
 MOVIES = pd.read_csv('../data/raw/movies.csv')
 ratings = pd.read_csv('../data/raw/ratings.csv')
 
-#%%
+
 
 final_dataset = ratings.pivot(index='movieId',columns='userId',values='rating')
 final_dataset.fillna(0,inplace=True)
@@ -29,7 +28,7 @@ knn = NearestNeighbors(metric='cosine',
                         n_jobs=-1)
 model = knn.fit(csr_data)
 
-#%%
+
 
 def get_recommendations_knn(movie_name):
     n_movies_to_reccomend = 10
@@ -47,5 +46,5 @@ def get_recommendations_knn(movie_name):
         return recommend_frame, movie_name
     else:
         lst = [f"🤷🏻‍♀️ Sorry, we could not find “{movie_name}” in our database. Perhaps we don't know it. However...are you SURE that all first letter were capitalised in you imput? 🧐"]
-        return lst
-#%%
+        return lst, movie_name
+

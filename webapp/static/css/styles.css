@@ -1,0 +1,43 @@
+/* 
+bgcol #45bea4
+dack blue, #2436df
+green #45bea4
+pink #d3b3ff
+
+*/
+
+body{
+    background-color: #d3b3ff; 
+    justify-content: center;
+}
+
+/* h1 {
+    background-color: yellow; 
+    color: #1F2890;  
+    font-size: 50px;
+} */
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* background-color: #45bea4; */
+}
+
+/* .test{
+    justify-content: center;
+} */
+
+.top {
+    background-color: #d3b3ff; 
+    /* display: flex; */
+    justify-content: center;
+}
+
+
+
+/* reminder:
+:afterORDER OF SPECIFICITY: 
+- universal
+- type /tag
+- class
+- id  */

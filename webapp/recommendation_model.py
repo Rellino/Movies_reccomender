@@ -10,8 +10,8 @@ import pickle
 from time import sleep
 from sklearn.decomposition import NMF
 
-logging.basicConfig(filename='models/NMFmodel.log',
-                    format='%(asctime)s: %(message)s')
+logging.basicConfig(filename='RecommenderLog.log',
+                    format='%(asctime)s:%(levelname)s: %(message)s')
 # %%
 
 

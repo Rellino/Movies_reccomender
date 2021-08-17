@@ -1,7 +1,7 @@
 # Movie Recommender
 Flask app based website for 2 movies recommenders: 
 - one based on 5 movies rating, using Collaborative Filtering NMF (non-negative matrix factorization) as rating model 
-- the second one based on the user favourite movie via Neighborhood-based Cosine-Similarity model.
+- the second based on the user favourite movie via Neighborhood-based Cosine-Similarity model.
 
 This unsupervised learning model example train on data from [MovieLens Dataset](https://grouplens.org/datasets/movielens/) 100k small dataset. The project is builted to save the input from the user, uptating the database and improving the models every 12 hours.
 
@@ -21,8 +21,8 @@ _Image from: Pixar-luca_
    
     * webscraper_img.py -> generate the link to the recommended movies
 
-    * templates/: contain the html file for the graphic visualisation
-    * static/: contain the CSS files for the webpages
+    * templates/: contains html files for the graphic visualisation
+    * static/: contains CSS files for the webpages
 
 ### Credits
 

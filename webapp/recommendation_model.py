@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-This module trains the NFM model based on the (updating) data and saves
+This module trains the NFM model based on the (updating every 12 hours) data and saves
 it in order for the recommendation engine to import it.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -18,7 +18,7 @@ logging.basicConfig(filename='RecommenderLog.log',
 def update_model(df):
     """
     trains the model based on the latest input
-    ARGUMENT: The pandas dataframe containing the recommandations
+    ARGUMENT: The pandas dataframe containing the latest recommandations
     """
 
     # Changing dataframe to numpy ndarray for building R matrix 
@@ -51,5 +51,5 @@ if __name__ == '__main__':
             pickle.dump(R_nmf, f2)
         logging.warning('New version of the R matrix for the NMF model saved in the "models" folder.')
 
-        sleep(60*60*12)
+        sleep(60*60*12) # update the model every 12 hours
 

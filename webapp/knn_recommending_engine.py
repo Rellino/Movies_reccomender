@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     Item-based Collaborative Filtering for Movie Recommendation System.
-    Using KNN with cosine distance
+    Using KNN with cosine similarity distance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 import pandas as pd
@@ -9,11 +9,8 @@ from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
 
 
-
-
 MOVIES = pd.read_csv('../data/raw/movies.csv')
 ratings = pd.read_csv('../data/raw/ratings.csv')
-
 
 
 final_dataset = ratings.pivot(index='movieId',columns='userId',values='rating')
@@ -31,6 +28,7 @@ model = knn.fit(csr_data)
 
 
 def get_recommendations_knn(movie_name):
+    ''' Recommend 10 movies based on the favourite movie from the user using the KNN Cosine Similarity Model''' 
     n_movies_to_reccomend = 10
     movie_list = MOVIES[MOVIES['title'].str.contains(movie_name)]  
     if len(movie_list):        

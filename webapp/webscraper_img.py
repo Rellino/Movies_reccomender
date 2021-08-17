@@ -1,14 +1,7 @@
-""" Identifiers that can be used to link to other sources of movie data are contained in the file `links.csv`. Each line of this file after the header row represents one movie, and has the following format:
-    movieId,imdbId,tmdbId
-movieId is an identifier for movies used by <https://movielens.org>. E.g., the movie Toy Story has the link <https://movielens.org/movies/1>.
-
-imdbId is an identifier for movies used by <http://www.imdb.com>. E.g., the movie Toy Story has the link <http://www.imdb.com/title/tt0114709/>.
-
-tmdbId is an identifier for movies used by <https://www.themoviedb.org>. E.g., the movie Toy Story has the link <https://www.themoviedb.org/movie/862>.
-
+"""  Module to select the picture of the reccomended movie from the MovieId.
 """
 
-# First do a merge of the table and take only the common MovieId
+# First do a merge of the table(the one that we used in the end the complete one with all the info) take only the common MovieId
 
 #%%
 import pandas as pd
@@ -42,3 +35,19 @@ response
 web_html = soup(response.text)
 # %%
 web_html.find('img', )
+
+
+
+
+
+
+
+
+''' note:
+Identifiers that can be used to link to other sources of movie data are contained in the file `links.csv`. Each line of this file after the header row represents one movie, and has the following format:
+    movieId,imdbId,tmdbId
+movieId is an identifier for movies used by <https://movielens.org>. E.g., the movie Toy Story has the link <https://movielens.org/movies/1>.
+
+imdbId is an identifier for movies used by <http://www.imdb.com>. E.g., the movie Toy Story has the link <http://www.imdb.com/title/tt0114709/>.
+
+tmdbId is an identifier for movies used by <https://www.themoviedb.org>. E.g., the movie Toy Story has the link <https://www.themoviedb.org/movie/862>.'''

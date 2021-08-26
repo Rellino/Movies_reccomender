@@ -14,7 +14,7 @@ This unsupervised learning model example train on data from [MovieLens Dataset](
     * raw: from [MovieLens Dataset](https://grouplens.org/datasets/movielens/) 100k small dataset
     * prepocessed: the final dataset with the new user imput uptated every 12h. 
 
-* MICE_imputer -> module to generate the clean `df_final.csv` datset filling the missing rating using Multivariate Imputation by Chained Equations: an imputation algorithm which replaces missing data values through an iterative series of predictive models, in this case a Random Forest regression model.
+* MICE_imputer -> module to generate the clean `df_final.csv` datset filling the missing rating using Multiple Imputation by Chained Equations: an imputation algorithm which replaces missing data values through an iterative series of predictive models, in this case a Random Forest regression model.
 
 * Webapp:
     * app.py -> the main program to run to visualize your the website on your browser
